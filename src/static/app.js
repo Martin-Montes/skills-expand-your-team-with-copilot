@@ -50,6 +50,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Theme management
   function initializeTheme() {
+    if (!themeToggle || !themeIcon) return;
+    
     const savedTheme = localStorage.getItem("theme");
     if (savedTheme === "dark") {
       document.body.classList.add("dark-mode");
@@ -61,6 +63,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function toggleTheme() {
+    if (!themeToggle || !themeIcon) return;
+    
     document.body.classList.toggle("dark-mode");
     const isDarkMode = document.body.classList.contains("dark-mode");
     
@@ -72,7 +76,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Event listener for theme toggle
-  themeToggle.addEventListener("click", toggleTheme);
+  if (themeToggle) {
+    themeToggle.addEventListener("click", toggleTheme);
+  }
 
   // Time range mappings for the dropdown
   const timeRanges = {
