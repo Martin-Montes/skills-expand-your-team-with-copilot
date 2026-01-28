@@ -606,7 +606,7 @@ document.addEventListener("DOMContentLoaded", () => {
             shareOnFacebook();
             break;
           case 'linkedin':
-            shareOnLinkedIn(name, details.description);
+            shareOnLinkedIn();
             break;
           case 'email':
             shareViaEmail(name, details.description, formattedSchedule);
@@ -856,19 +856,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const text = `Check out ${activityName} at Mergington High School! ${description}`;
     const url = window.location.href;
     const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
-    window.open(twitterUrl, '_blank', 'width=550,height=420');
+    window.open(twitterUrl, '_blank', 'width=550,height=420,noopener,noreferrer');
   }
 
   function shareOnFacebook() {
     const url = window.location.href;
     const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
-    window.open(facebookUrl, '_blank', 'width=550,height=420');
+    window.open(facebookUrl, '_blank', 'width=550,height=420,noopener,noreferrer');
   }
 
-  function shareOnLinkedIn(activityName, description) {
+  function shareOnLinkedIn() {
     const url = window.location.href;
     const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
-    window.open(linkedInUrl, '_blank', 'width=550,height=420');
+    window.open(linkedInUrl, '_blank', 'width=550,height=420,noopener,noreferrer');
   }
 
   function shareViaEmail(activityName, description, schedule) {
