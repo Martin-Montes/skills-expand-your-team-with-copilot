@@ -700,6 +700,11 @@ footer {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
+.share-button:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
 .share-button.twitter {
   background-color: #1da1f2;
   color: white;

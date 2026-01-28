@@ -530,16 +530,16 @@ document.addEventListener("DOMContentLoaded", () => {
       ${capacityIndicator}
       <div class="share-buttons">
         <span class="share-label">Share:</span>
-        <button class="share-button twitter" title="Share on Twitter" data-share="twitter">
+        <button type="button" class="share-button twitter" title="Share on Twitter" aria-label="Share on Twitter" data-share="twitter">
           𝕏
         </button>
-        <button class="share-button facebook" title="Share on Facebook" data-share="facebook">
+        <button type="button" class="share-button facebook" title="Share on Facebook" aria-label="Share on Facebook" data-share="facebook">
           f
         </button>
-        <button class="share-button linkedin" title="Share on LinkedIn" data-share="linkedin">
+        <button type="button" class="share-button linkedin" title="Share on LinkedIn" aria-label="Share on LinkedIn" data-share="linkedin">
           in
         </button>
-        <button class="share-button email" title="Share via Email" data-share="email">
+        <button type="button" class="share-button email" title="Share via Email" aria-label="Share via Email" data-share="email">
           ✉
         </button>
       </div>
@@ -603,7 +603,7 @@ document.addEventListener("DOMContentLoaded", () => {
             shareOnTwitter(name, details.description);
             break;
           case 'facebook':
-            shareOnFacebook(name);
+            shareOnFacebook();
             break;
           case 'linkedin':
             shareOnLinkedIn(name, details.description);
@@ -611,6 +611,8 @@ document.addEventListener("DOMContentLoaded", () => {
           case 'email':
             shareViaEmail(name, details.description, formattedSchedule);
             break;
+          default:
+            console.error('Unknown share type:', shareType);
         }
       });
     });
@@ -857,7 +859,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.open(twitterUrl, '_blank', 'width=550,height=420');
   }
 
-  function shareOnFacebook(activityName) {
+  function shareOnFacebook() {
     const url = window.location.href;
     const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
     window.open(facebookUrl, '_blank', 'width=550,height=420');
@@ -865,8 +867,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function shareOnLinkedIn(activityName, description) {
     const url = window.location.href;
-    const title = `${activityName} - Mergington High School`;
-    const summary = description;
     const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
     window.open(linkedInUrl, '_blank', 'width=550,height=420');
   }
